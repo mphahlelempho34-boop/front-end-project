@@ -12,7 +12,7 @@ function Home({ favorites, onFavorite }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  let url = "https://proven-jab-aorta.ngrok-free.dev/api/books";
+  let url = "http://localhost:8080/api/books";
 
   async function getBooks() {
     setLoading(true);
