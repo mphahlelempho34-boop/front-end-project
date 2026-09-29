@@ -1,0 +1,46 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+
+/* Input Fields styling */
+.loginInput {
+  margin-left: 10%; /* Increase or decrease this percentage until it shifts to the right edge you want */
+  width: 600px;     /* Match this exactly to your login button's width */
+  box-sizing: border-box;
+  
+  font-weight: 600;
+  padding: 14px;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.loginInput:focus {
+  border-color: #0066cc; /* Brand highlight color */
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+}
+.loginBtn {
+  width: 50%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.loginBtn:hover {
+  background-color: #350563;
+}
+
+.loginBtn:active {
+  background-color: #350563;
+}

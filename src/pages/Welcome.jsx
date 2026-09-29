@@ -2,8 +2,8 @@
 import Home from "./Home";
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-import axios from "axios";
-import NavBar from "./NavBar";
+
+import "./Welcome.css";
 
 
 function Welcome(){
@@ -36,14 +36,32 @@ function Welcome(){
     </div>
     <div id = "login">
         <form>
-           <input type = "text" value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder = " Username" className = "loginInput"/>
-           <br></br>
-           <input type = "text" value={passInput} onChange={(e) => setPassInput(e.target.value)} placeholder = " Password" className = "loginInput"/>
-           <br></br>
+
+         <div className="form-group">  
+          <input
+            id="username"
+            type="text"
+            placeholder="Username"
+            className="loginInput"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            id="password"
+            type="text"
+            placeholder="Password"
+            className="loginInput"
+            value={passInput}
+            onChange={(e) => setPassInput(e.target.value)}
+          />
+        </div>
            
             <button type = "submit" className = "loginBtn" onClick={clicked}> LOGIN </button>
         </form>
     </div>
+    
 
    </>
  );
