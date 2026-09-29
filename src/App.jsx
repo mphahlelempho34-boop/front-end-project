@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import NavBar from "./pages/NavBar"
 import Home from "./pages/Home";
 import Welcome from "./pages/Welcome";
 import Favorites from "./pages/Favorites";
+import NavBar from "./pages/NavBar";
+import Registration from "./pages/Registration"
+import Navigation from "../components/Navigation";
+
 import "./App.css"
 
 function App() {
@@ -23,17 +26,10 @@ function App() {
 
   return (
     <>
-      <nav className="navbar">
-        <div className="navbar-brand">
-            <Link to="/">Books App</Link>
-        </div>
-        <div className="navbar-links">
-         
-            <Link to="/Home" className="nav-link">Home</Link> <br/>
-            <Link to="/favorites" className="nav-link">Favorites</Link>
-            <br/><br/>
-        </div>
-    </nav>
+     
+     <NavBar/>
+     <Navigation/>
+     
 
       <Routes>
         <Route
@@ -43,6 +39,16 @@ function App() {
             />
           }
         />
+
+        <Route
+          path="/Registration"
+          element={
+            <Registration
+            />
+          }
+        />
+
+
         <Route
           path="/home"
           element={
@@ -62,6 +68,9 @@ function App() {
             />
           }
         />
+
+        
+
       </Routes>
     </>
   );

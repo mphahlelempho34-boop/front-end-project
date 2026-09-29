@@ -1,48 +1,53 @@
+
+import Home from "./Home";
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import NavBar from "./NavBar";
 
-const API_URL = "https://learnapi-production-9220.up.railway.app";
 
-function Welcome() {
+function Welcome(){
+
+  const [userInput, setUserInput] = useState('');
+  const [passInput, setPassInput] = useState('');
   
-    const navigate = useNavigate();
-    const [books, setBooks] = useState([]);
-      const [loading, setLoading] = useState(false);
-      const [error, setError] = useState(null);
-  let url = `${API_URL}/api/books`;
+  
+  
+ const navigate = useNavigate(); // Initialize the navigation hook
 
-  async function getBooks() {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await axios.get(url, {
-        headers: { Accept: "application/json" },
-      });
-      console.log("API response:", response.data);
-      setBooks(response.data);
-    navigate('/Home', {state : {books: response.data}});
+ const user  = {name : "Kamogelo Monkwe", username : "kmonkwe", password : "1234567"}
 
-    } catch (err) {
-      console.error("Failed to fetch books:", err);
-      setError("Couldn't load books. Check the API is running.");
-    } finally {
-      setLoading(false);
-    }
+ const clicked = () => {
+  if (userInput.trim() === user.username && passInput.trim() === user.password) {
+    // Just log in and navigate immediately
+    navigate('/Home');
   }
-  return (
 
+    else alert("Wrong details provided, please try again!!")
+ }
+
+ return (
     <>
-    <h2>WELCOME TO YOUR FAVORITE BOOK'S APP</h2>
-    <br/>
-    <button onClick={getBooks} className="fetch-button" disabled={loading}>
-        {loading ? "Loading..." : "Load Books"}
-      </button>
-      
-  </>
-  )
+   
 
-    
+    <div id = "welcome">
+        <h1 > Welcome </h1>
+        <br />
+    </div>
+    <div id = "login">
+        <form>
+           <input type = "text" value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder = " Username" className = "loginInput"/>
+           <br></br>
+           <input type = "text" value={passInput} onChange={(e) => setPassInput(e.target.value)} placeholder = " Password" className = "loginInput"/>
+           <br></br>
+           
+            <button type = "submit" className = "loginBtn" onClick={clicked}> LOGIN </button>
+        </form>
+    </div>
+
+   </>
+ );
+
 }
 
-  export default Welcome;
+export default Welcome;

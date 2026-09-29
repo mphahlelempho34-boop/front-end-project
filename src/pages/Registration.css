@@ -1,0 +1,88 @@
+
+/* Centers the registration card completely on the page */
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f6f9; /* Soft background tint */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+/* The wrapper card */
+.registration-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px; /* Ensures it looks good on mobile and desktop */
+  box-sizing: border-box;
+}
+
+.registration-card h2 {
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+  font-size: 24px;
+  text-align: center;
+}
+
+.registration-card .subtitle {
+  margin: 0 0 24px 0;
+  color: #666666;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Replaces old break tags with consistent margins */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-bottom: 6px;
+}
+
+/* Input Fields styling */
+.UserInput {
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.UserInput:focus {
+  border-color: #0066cc; /* Brand highlight color */
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+}
+
+/* Submit Button styling */
+.submit-button {
+  width: 50%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #0052a3;
+}
+
+.submit-button:active {
+  background-color: #004080;
+}

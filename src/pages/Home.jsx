@@ -1,47 +1,51 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import Books from "../../components/Books";
 import "./Home.css";
 import The4OfUs from "../../components/the4ofus.jpg";
 import Uzalo from "../../components/Uzalo.jpg";
 import Skeem from "../../components/Skeem.jpg";
 import axios from "axios";
-import {useLocation} from 'react-router-dom';
 
+const API_URL = "https://learnapi-production-9220.up.railway.app";
 
 function Home({ favorites, onFavorite }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const location = useLocation();
-  const books = location.state?.books || [];
- 
+
+  let url = `${API_URL}/api/books`;
+
+    
+  async function getBooks() {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(url, {
+        headers: { Accept: "application/json" },
+      });
+      console.log("API response:", response.data);
+      setBooks(response.data);
+    } catch (err) {
+      console.error("Failed to fetch books:", err);
+      setError("Couldn't load books. Check the API is running.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // 2. Trigger the fetch automatically when the component loads
+  useEffect(() => {
+    getBooks();
+  }, []); // Empty array ensures this runs only once when arriving at /Home
+
 
   const handleSearch = (e) => {
     e.preventDefault();
   };
 
-  
-
-// 2. Add the delete function handler
-const handleDeleteBook = (bookId) => {
-  // Option A: Just remove it from the screen immediately (Frontend only)
-  setBooks(prevBooks => prevBooks.filter(book => book.id !== bookId));
-
-  /* Option B: If you have a working API endpoint, delete it from the backend database too:
-  
-  axios.delete(`https://learnapi-production-9220.up.railway.app{bookId}`)
-    .then(() => {
-      setBooks(prevBooks => prevBooks.filter(book => book.id !== bookId));
-    })
-    .catch(err => console.error("Could not delete book from server", err));
-  */
-};
-
   return (
     <>
-
-    
-
       <br />
       <form onSubmit={handleSearch} className="search-form">
         <input
@@ -56,6 +60,8 @@ const handleDeleteBook = (bookId) => {
         </button>
       </form>
 
+       
+
       <div className="books-grid">
         {books
           .filter((book) =>
@@ -67,7 +73,6 @@ const handleDeleteBook = (bookId) => {
               book={book}
               onFavorite={onFavorite}
               isFavorite={favorites.some((item) => item.id === book.id)}
-              onDelete={handleDeleteBook}
             />
           ))}
       </div>

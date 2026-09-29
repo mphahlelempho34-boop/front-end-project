@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; // 1. Import useLocation [3]
 
@@ -6,10 +5,13 @@ function NavBar() {
   const location = useLocation(); // 2. Grab the current active path [3]
 
   // 3. If the path is exactly "/", don't render anything at all [3]
-  if (location.pathname === "/") {
+  if (location.pathname === "/Home" ) {
     return null;
   }
-  else if (location.pathname === "/Registration") {
+  else if (location.pathname === "/Favorites" ) {
+    return null;
+  }
+  else if (location.pathname === "/" ) {
     return null;
   }
 
@@ -19,12 +21,10 @@ function NavBar() {
         <Link to="/">Books App</Link>
       </div>
       <div className="navbar-links">
-        
-        <Link to="/Home" className="nav-link">Home</Link>
-        <Link to="/favorites" className="nav-link">Favorites</Link>
+        <Link to="/" className="nav-link">Welcome</Link>
       </div>
     </nav>
   );
 }
 
-export default NavBar;
+export default RegNav;
