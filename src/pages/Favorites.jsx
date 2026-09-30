@@ -1,8 +1,11 @@
 import Books from "../../components/Books";
 import "./Favorites.css"
+import NavBar from "./NavBar";
 
 function Favorites({ favorites, onFavorite }) {
   return (
+    <>
+    <NavBar/>
     <div>
       {favorites.length === 0 ? (
         <div className="favorite-empty">
@@ -28,6 +31,7 @@ function Favorites({ favorites, onFavorite }) {
         </div>
       )}
     </div>
+    </>
   );
 }
 

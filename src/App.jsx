@@ -6,6 +6,7 @@ import Favorites from "./pages/Favorites";
 import NavBar from "./pages/NavBar";
 import Registration from "./pages/Registration"
 import Navigation from "../components/Navigation";
+import RegNav from "../components/RegNav";
 
 import "./App.css"
 
@@ -26,10 +27,6 @@ function App() {
 
   return (
     <>
-     
-     <NavBar/>
-     <Navigation/>
-     
 
       <Routes>
         <Route

@@ -2,7 +2,7 @@
 import Home from "./Home";
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-
+import Navigation from "../../components/Navigation"
 import "./Welcome.css";
 
 
@@ -28,7 +28,7 @@ function Welcome(){
 
  return (
     <>
-   
+   <Navigation/>
 
     <div id = "welcome">
         <h1 > Welcome </h1>

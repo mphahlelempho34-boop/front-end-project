@@ -2,6 +2,7 @@ import React, { useState } from "react"; // 1. Crucial import for state
 import "./Registration.css";
 import Welcome from "./Welcome"
 import { useNavigate } from "react-router-dom";
+import RegNav from "../../components/RegNav"
 
 function Registration() {
     const navigate = useNavigate();
@@ -29,6 +30,8 @@ function Registration() {
   };
   
   return (
+<>
+    <RegNav/>
   <div className="registration-container">
     <div className="registration-card">
       <h2>Create an Account</h2>
@@ -89,6 +92,7 @@ function Registration() {
       </form>
     </div>
   </div>
+  </>
 );
 }
 

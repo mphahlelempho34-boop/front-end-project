@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; // 1. Import useLocation [3]
+import "./RegNav.css"
 
-function NavBar() {
+function RegNav() {
   const location = useLocation(); // 2. Grab the current active path [3]
 
   // 3. If the path is exactly "/", don't render anything at all [3]

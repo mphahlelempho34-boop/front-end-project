@@ -1,9 +1,7 @@
 import { useState , useEffect } from "react";
 import Books from "../../components/Books";
 import "./Home.css";
-import The4OfUs from "../../components/the4ofus.jpg";
-import Uzalo from "../../components/Uzalo.jpg";
-import Skeem from "../../components/Skeem.jpg";
+import NavBar from "./NavBar";
 import axios from "axios";
 
 const API_URL = "https://learnapi-production-9220.up.railway.app";
@@ -46,6 +44,7 @@ function Home({ favorites, onFavorite }) {
 
   return (
     <>
+    <NavBar/>
       <br />
       <form onSubmit={handleSearch} className="search-form">
         <input
