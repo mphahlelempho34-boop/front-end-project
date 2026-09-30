@@ -9,6 +9,7 @@ function Books({ book, onFavorite, isFavorite, onDelete, onShowInfo }) {
     setShowMenu(!showMenu);
   };
 
+
   return (
     <div className="book">
       <div className="book-poster">
@@ -39,10 +40,15 @@ function Books({ book, onFavorite, isFavorite, onDelete, onShowInfo }) {
               {/* Dropdown Options Menu */}
               {showMenu && (
                 <div className="dropdown-menu">
-                  <button onClick={() => { onShowInfo(book); setShowMenu(false); }}>
+                  {/* Safely check if onShowInfo exists before calling it */}
+                  <button onClick={() => { onShowInfo && onShowInfo(book); setShowMenu(false); }}>
                     🛈 More Info
                   </button>
-                  <button className="delete-option" onClick={() => { onDelete(book.id); setShowMenu(false); }}>
+                  <button className="delete-option" 
+                    onClick={() => { 
+                      onDelete(book.id); // This now executes the state change back up in Home!
+                      setShowMenu(false); 
+                    }}>
                     🗑 Delete
                   </button>
                 </div>

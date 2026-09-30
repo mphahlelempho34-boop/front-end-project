@@ -42,6 +42,12 @@ function Home({ favorites, onFavorite }) {
     e.preventDefault();
   };
 
+  const handleDeleteFrontEnd = (bookId) => {
+    // Filter the state array inside Home
+    const updatedBooks = books.filter(item => item.id !== bookId);
+    setBooks(updatedBooks);
+  };
+
   return (
     <>
     <NavBar/>
@@ -72,6 +78,8 @@ function Home({ favorites, onFavorite }) {
               book={book}
               onFavorite={onFavorite}
               isFavorite={favorites.some((item) => item.id === book.id)}
+              
+            onDelete={handleDeleteFrontEnd} 
             />
           ))}
       </div>

@@ -21,6 +21,7 @@ function NavBar() {
       </div>
       <div className="navbar-links">
         
+        <Link to="/Home" className="nav-link">Add A Book</Link>
         <Link to="/Home" className="nav-link">Home</Link>
         <Link to="/favorites" className="nav-link">Favorites</Link>
       </div>
