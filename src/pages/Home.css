@@ -1,64 +1,159 @@
+/* ========================================
+   HOME
+======================================== */
+
 .home {
-  padding: 2rem 0;
   width: 100%;
-  box-sizing: border-box;
+
+  padding: 32px 0 50px;
 }
 
+/* ========================================
+   SEARCH BAR
+======================================== */
 
 .search-form {
-  max-width: 600px;
-  margin: 0 auto 2rem;
+  width: min(700px, calc(100% - 40px));
+
+  margin: 25px auto 35px;
+
   display: flex;
-  gap: 1rem;
-  padding: 0 1rem;
-  box-sizing: border-box;
+
+  gap: 10px;
 }
 
 .search-input {
   flex: 1;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #333;
-  color: white;
-  font-size: 1rem;
+
+  min-width: 0;
+
+  padding: 13px 16px;
+
+  border: 1px solid #334155;
+
+  border-radius: 10px;
+
+  background: #1e293b;
+
+  color: #f8fafc;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: #64748b;
 }
 
 .search-input:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #666;
+  border-color: #64748b;
+
+  box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.15);
 }
 
 .search-button {
-  padding: 0.75rem 1.5rem;
-  background-color: #e50914;
-  color: white;
-  border-radius: 4px;
-  font-weight: 500;
-  transition: background-color 0.2s;
-  white-space: nowrap;
+  padding: 13px 22px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #3b82f6;
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .search-button:hover {
-  background-color: #f40612;
+  background: #2563eb;
+
+  transform: translateY(-1px);
 }
 
+/* ========================================
+   FOUR COLUMN BOOK GRID
+======================================== */
 
-@media (max-width: 639px) {
-  .home {
-    padding: 1rem 0;
+.books-grid {
+  width: 100%;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  padding: 0 35px;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 24px;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1050px) {
+  .books-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    padding: 0 25px;
+  }
+}
+
+/* ========================================
+   SMALL TABLET
+======================================== */
+
+@media (max-width: 750px) {
+  .books-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    padding: 0 18px;
+
+    gap: 16px;
   }
 
   .search-form {
-    margin-bottom: 1rem;
+    width: calc(100% - 30px);
   }
 }
 
-.books-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+/* ========================================
+   PHONE
+======================================== */
+
+@media (max-width: 480px) {
+  .books-grid {
+    grid-template-columns: 1fr;
+
+    padding: 0 15px;
+
+    gap: 18px;
+  }
+
+  .search-form {
+    width: calc(100% - 30px);
+
+    flex-direction: column;
+  }
+
+  .search-button {
+    width: 100%;
+  }
 }

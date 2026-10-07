@@ -27,12 +27,10 @@ function App() {
         <div className="navbar-brand">
             <Link to="/">Books App</Link>
         </div>
-        <div className="navbar-links">
-         
-            <Link to="/Home" className="nav-link">Home</Link> <br/>
-            <Link to="/favorites" className="nav-link">Favorites</Link>
-            <br/><br/>
-        </div>
+         <div className="navbar-links">
+  <Link to="/home" className="nav-link">Home</Link>
+  <Link to="/favorites" className="nav-link">Favorites</Link>
+   </div>
     </nav>
 
       <Routes>
