@@ -1,8 +1,29 @@
+HEAD
 .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
+
+.welcome-page {
+  display: flex;
+  flex-direction: column;   /* Stacks elements vertically */
+  align-items: center;      /* Centers the flex items horizontally */
+  justify-content: center;  /* Centers items vertically within the area */
+  text-align: center;       /* Centers the header text lines */
+  padding: 40px 20px;
+  width: 100%;
+}
+
+/* Force the input boxes and button to have a neat maximum width and stay centered */
+.loginInput, 
+.loginBtn {
+  width: 100%;
+  max-width: 500px;         /* Keeps them from stretching too wide across the screen */
+  margin: 10px auto;        /* Adds vertical space and forces horizontal centering */
+  display: block;           /* Ensures they behave like blocks to respect margins */
+}
+
 
 
 /* Input Fields styling */
@@ -43,4 +64,193 @@
 
 .loginBtn:active {
   background-color: #350563;
+
+ @import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600&family=Young+Serif&display=swap");
+
+/*
+  Palette
+  library green  #17352d  (page)
+  shelf dark     #0e211b  (shelf plank)
+  paper          #f1ece0  (text)
+  muted paper    #b9c4bb  (secondary text)
+  ochre          #d9a441  (button + one spine)
+  brick          #b4452f
+  ink blue       #2d4a7a
+  plum           #6b2e4a
+*/
+
+.welcome-page {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  box-sizing: border-box;
+  background: #17352d;
+  color: #f1ece0;
+  font-family: "Public Sans", system-ui, sans-serif;
+}
+
+.welcome-content {
+  width: 100%;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 56px;
+}
+
+/* Text column: left aligned */
+
+.welcome-text {
+  padding-bottom: 14px;
+}
+
+.welcome-text h1 {
+  margin: 0;
+  max-width: 11em;
+
+  font-family: "Young Serif", Georgia, serif;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  color: #f1ece0;
+}
+
+.welcome-description {
+  max-width: 30em;
+  margin: 20px 0 32px;
+
+  font-size: 17px;
+  line-height: 1.6;
+  color: #b9c4bb;
+}
+
+.fetch-button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 4px;
+
+  background: #d9a441;
+  color: #17352d;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fetch-button:hover {
+  background: #e6b656;
+}
+
+.fetch-button:focus-visible {
+  outline: 3px solid #f1ece0;
+  outline-offset: 3px;
+}
+
+.fetch-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.welcome-hint {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: #b9c4bb;
+}
+
+.welcome-error {
+  max-width: 30em;
+  margin: 16px 0 0;
+  padding-left: 12px;
+  border-left: 3px solid #e8806a;
+
+  font-size: 14px;
+  line-height: 1.5;
+  color: #f3b5a8;
+}
+
+/* Shelf of spines: the one visual moment */
+
+.shelf {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  padding: 0 18px;
+  border-bottom: 14px solid #0e211b;
+  min-height: 220px;
+}
+
+
+.spine {
+  flex: 0 0 auto;
+  width: var(--w);
+  height: var(--h);
+  background-color: var(--c);
+  background-image: linear-gradient(
+    to bottom,
+    transparent 12%,
+    rgba(0, 0, 0, 0.2) 12% 14%,
+    transparent 14% 86%,
+    rgba(0, 0, 0, 0.2) 86% 88%,
+    transparent 88%
+  );
+  border-radius: 2px 2px 0 0;
+}
+
+/* One book leans on its neighbour */
+.spine--lean {
+  transform: rotate(9deg);
+  transform-origin: bottom left;
+  margin-left: 6px;
+}
+
+/* While loading, one book slides up off the shelf */
+.spine--pull {
+  transition: transform 0.4s ease;
+}
+
+.shelf.is-loading .spine--pull {
+  transform: translateY(-26px);
+}
+
+/* Tablet and phone: stack, shelf under the text */
+
+@media (max-width: 760px) {
+  .welcome-page {
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+
+  .welcome-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .welcome-text {
+    padding-bottom: 0;
+  }
+
+  .welcome-description {
+    font-size: 16px;
+  }
+
+  .fetch-button {
+    width: 100%;
+  }
+
+  .shelf {
+    min-height: 200px;
+    padding: 0 12px;
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spine--pull {
+    transition: none;
+  }
+}
 }
