@@ -1,0 +1,111 @@
+/* ========================================
+   FAVORITES
+======================================== */
+
+.favorites {
+  width: 100%;
+
+  padding: 35px 0 50px;
+}
+
+/* ========================================
+   EMPTY FAVORITES
+======================================== */
+
+.favorite-empty {
+  width: min(600px, calc(100% - 40px));
+
+  margin: 70px auto;
+
+  padding: 45px 30px;
+
+  text-align: center;
+
+  background: #1e293b;
+
+  border: 1px solid #334155;
+
+  border-radius: 16px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.favorite-empty h2 {
+  margin-bottom: 12px;
+
+  color: #f8fafc;
+
+  font-size: 26px;
+}
+
+.favorite-empty p {
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+/* ========================================
+   FAVORITE BOOK GRID
+======================================== */
+
+.favorites .books-grid {
+  width: 100%;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  padding: 0 35px;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 24px;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1050px) {
+  .favorites .books-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    padding: 0 25px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 750px) {
+  .favorites .books-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    padding: 0 18px;
+
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites .books-grid {
+    grid-template-columns: 1fr;
+
+    padding: 0 15px;
+  }
+
+  .favorite-empty {
+    padding: 35px 20px;
+  }
+
+  .favorite-empty h2 {
+    font-size: 22px;
+  }
+}

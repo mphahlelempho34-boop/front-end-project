@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import axios from "axios";
 import Home from "./pages/Home";
+import Welcome from "./pages/Welcome";
 import Favorites from "./pages/Favorites";
-// import booksService from "./service/booksService";
+import NavBar from "./pages/NavBar";
+import Registration from "./pages/Registration"
+import Navigation from "../components/Navigation";
+import RegNav from "../components/RegNav";
+
+import "./App.css"
 
 function App() {
   const [favorites, setFavorites] = useState([]);
@@ -23,23 +28,27 @@ function App() {
 
   return (
     <>
-      <nav className="navbar">
-        <h1>My Books</h1>
-
-      
-
-        <div className="nav-links">
-          <Link to="/">Home</Link>
-
-          <Link to="/favorites">
-            Favorites ({favorites.length})
-          </Link>
-        </div>
-      </nav>
 
       <Routes>
         <Route
           path="/"
+          element={
+            <Welcome
+            />
+          }
+        />
+
+        <Route
+          path="/Registration"
+          element={
+            <Registration
+            />
+          }
+        />
+
+
+        <Route
+          path="/home"
           element={
             <Home
               favorites={favorites}
@@ -57,6 +66,9 @@ function App() {
             />
           }
         />
+
+        
+
       </Routes>
     </>
   );

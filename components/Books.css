@@ -1,8 +1,377 @@
-.images{
-    width: 10%;
-    padding : 10px
+/* ========================================
+   BOOK CARD
+======================================== */
+
+.book {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #1e293b;
+
+  border: 1px solid #334155;
+  border-radius: 14px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.favorite-btn{
-    padding : 1%
+.book:hover {
+  transform: translateY(-6px);
+
+  border-color: #475569;
+
+  box-shadow:
+    0 16px 30px rgba(0, 0, 0, 0.35),
+    0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   BOOK IMAGE
+======================================== */
+
+.book-poster {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 2 / 3;
+
+  overflow: hidden;
+
+  background: #111827;
+}
+
+.book-poster img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+.book:hover .book-poster img {
+  transform: scale(1.04);
+}
+
+/* ========================================
+   IMAGE OVERLAY
+======================================== */
+
+.book-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.05) 40%,
+    rgba(0, 0, 0, 0.75)
+  );
+
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
+}
+
+.book:hover .book-overlay {
+  opacity: 1;
+}
+
+/* ========================================
+   ACTION BUTTONS
+======================================== */
+
+.overlay-actions-top-right {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+/* Favorite */
+
+.favorite-btn {
+  width: 38px;
+  height: 38px;
+
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 50%;
+
+  background: rgba(15, 23, 42, 0.8);
+
+  color: #ffffff;
+
+  font-size: 20px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(6px);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.favorite-btn.active {
+  color: #ff4757;
+}
+
+/* ========================================
+   THREE DOTS
+======================================== */
+
+.options-container {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+}
+
+.options-btn {
+  width: 38px;
+  height: 38px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 50%;
+
+  background: rgba(15, 23, 42, 0.8);
+
+  color: #ffffff;
+
+  font-size: 21px;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(6px);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.options-btn:hover {
+  transform: scale(1.1);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+/* ========================================
+   DROPDOWN
+======================================== */
+
+.dropdown-menu {
+  position: absolute;
+
+  top: 46px;
+  right: 0;
+
+  min-width: 155px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #1e293b;
+
+  border: 1px solid #475569;
+
+  border-radius: 10px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+
+  z-index: 1000;
+}
+
+.dropdown-menu button {
+  width: 100%;
+
+  padding: 11px 14px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #e5e7eb;
+
+  text-align: left;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu button:hover {
+  background: #334155;
+}
+
+.dropdown-menu .delete-option {
+  color: #ff6b6b;
+}
+
+.dropdown-menu .delete-option:hover {
+  background: rgba(239, 68, 68, 0.12);
+}
+
+/* ========================================
+   BOOK INFORMATION
+======================================== */
+
+.book-info {
+  flex: 1;
+
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  background: #1e293b;
+}
+
+.book-info h3 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  line-height: 1.35;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+.book-info p {
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+
+  line-height: 1.4;
+}
+
+/* ========================================
+   RATING
+======================================== */
+
+.user-rating {
+  margin-top: auto;
+
+  color: #facc15;
+
+  font-size: 14px;
+}
+
+.rating-select {
+  margin-top: 8px;
+
+  padding: 8px 10px;
+
+  border: 1px solid #475569;
+
+  border-radius: 7px;
+
+  background: #0f172a;
+
+  color: #f8fafc;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+  .book {
+    border-radius: 12px;
+  }
+
+  .book-info {
+    padding: 12px;
+  }
+
+  .book-info h3 {
+    font-size: 15px;
+  }
+
+  .book-info p {
+    font-size: 13px;
+  }
+
+  .favorite-btn,
+  .options-btn {
+    width: 34px;
+    height: 34px;
+
+    font-size: 18px;
+  }
+
+  .overlay-actions-top-right {
+    top: 9px;
+    right: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-info {
+    padding: 10px;
+  }
+
+  .favorite-btn,
+  .options-btn {
+    width: 32px;
+    height: 32px;
+
+    font-size: 17px;
+  }
 }

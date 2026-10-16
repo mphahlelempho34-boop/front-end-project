@@ -1,68 +1,57 @@
-
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import Books from "../../components/Books";
-
-import The4OfUs from "../../components/the4ofus.jpg";
-import Uzalo from "../../components/Uzalo.jpg";
-import Skeem from "../../components/Skeem.jpg";
+import "./Home.css";
+import NavBar from "./NavBar";
 import axios from "axios";
+
+const API_URL = "https://learnapi-production-9220.up.railway.app";
 
 function Home({ favorites, onFavorite }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
+  let url = `${API_URL}/api/books`;
 
-
-  
-    const [books, setBooks] = useState(null);
-  
-  
-    let url = "http://localhost:8080/api/books";
-  
-   async function  fetchBooks() { 
-            try{
-                const {data } = await axios.get(url, {
-                    headers: { Accept: "application/json" },
-                });
-  
-  
-  
-                setBooks(data);
-                
-                console.log("Books received: ", data );
-  
-            }catch(error) {
-                console.log(error.response, "Failed to fetch books")
-            }
-        }
-  
-  // const books = [
-  //   {
-  //     id: 1,
-  //     title: "The Four Of Us",
-  //     author: "Kamogelo",
-  //     url: The4OfUs,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Uzalo",
-  //     author: "Mpho",
-  //     url: Uzalo,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Skeem Saam",
-  //     author: "Nyiko",
-  //     url: Skeem,
-  //   },
-  // ];
     
+  async function getBooks() {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(url, {
+        headers: { Accept: "application/json" },
+      });
+      console.log("API response:", response.data);
+      setBooks(response.data);
+    } catch (err) {
+      console.error("Failed to fetch books:", err);
+      setError("Couldn't load books. Check the API is running.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // 2. Trigger the fetch automatically when the component loads
+  useEffect(() => {
+    getBooks();
+  }, []); // Empty array ensures this runs only once when arriving at /Home
+
 
   const handleSearch = (e) => {
     e.preventDefault();
   };
 
+  const handleDeleteFrontEnd = (bookId) => {
+    // Filter the state array inside Home
+    const updatedBooks = books.filter(item => item.id !== bookId);
+    setBooks(updatedBooks);
+  };
+
   return (
     <>
+    <NavBar/>
+      
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
@@ -71,28 +60,26 @@ function Home({ favorites, onFavorite }) {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-
         <button type="submit" className="search-button">
           Search
         </button>
       </form>
 
-    <button onClick={fetchBooks}>Get new books</button>
+       
+
       <div className="books-grid">
         {books
-          ?.filter((book) =>
-            book.title
-              .toLowerCase()
-              .startsWith(searchQuery.toLowerCase())
+          .filter((book) =>
+            book.title.toLowerCase().startsWith(searchQuery.toLowerCase())
           )
           .map((book) => (
             <Books
               key={book.id}
               book={book}
               onFavorite={onFavorite}
-              isFavorite={favorites.some(
-                (item) => item.id === book.id
-              )}
+              isFavorite={favorites.some((item) => item.id === book.id)}
+              
+            onDelete={handleDeleteFrontEnd} 
             />
           ))}
       </div>
@@ -101,4 +88,3 @@ function Home({ favorites, onFavorite }) {
 }
 
 export default Home;
-

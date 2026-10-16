@@ -1,30 +1,104 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+ /* ================================
+   APP / NAVIGATION
+================================ */
+
+.navbar {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111827;
+  border-bottom: 1px solid #263244;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.book-list {
-  width: 600px;
-  margin: 40px auto;
+/* Logo */
+.navbar-brand a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  transition: opacity 0.2s ease;
 }
 
-.search-button{
-  background-color : pink;
-  color : rgb(10, 10, 10);
-  cursor : pointer;
-  padding : 0px, 10px, 60px
+ HEAD
+.navbar-brand a {
+  text-decoration: none;
+  
 }
-.book {
-  background-color: white;
-  padding: 20px;
-  margin-bottom: 15px;
+
+
+.navbar-brand a:hover {
+  opacity: 0.8;
+}
+
+/* Navigation links */
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-link {
+  color: #d1d5db;
+  text-decoration: none;
+  padding: 9px 16px;
   border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-.book h2 {
-  margin-bottom: 5px;
+.nav-link:hover {
+  color: #ffffff;
+  background: #1f2937;
 }
 
-.book p {
-  color: gray;
+.nav-link:active {
+  background: #374151;
+}
+
+/* ================================
+   MOBILE NAVIGATION
+================================ */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .navbar-brand a {
+    font-size: 20px;
+  }
+
+  .navbar-links {
+    gap: 4px;
+  }
+
+  .nav-link {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 14px 15px;
+  }
+
+  .navbar-brand a {
+    font-size: 18px;
+  }
+
+  .nav-link {
+    padding: 7px 8px;
+    font-size: 13px;
+  }
 }
