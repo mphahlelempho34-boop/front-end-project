@@ -51,7 +51,7 @@ function Home({ favorites, onFavorite }) {
   return (
     <>
     <NavBar/>
-      <br />
+      
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
