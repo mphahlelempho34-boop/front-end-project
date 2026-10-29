@@ -4,7 +4,7 @@ import "./Home.css";
 import NavBar from "./NavBar";
 import axios from "axios";
 
-const API_URL = "https://learnapi-production-9220.up.railway.app";
+const API_URL = "https://learnapi-6469.onrender.com";
 
 function Home({ favorites, onFavorite }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,7 +14,7 @@ function Home({ favorites, onFavorite }) {
 
   let url = `${API_URL}/api/books`;
 
-    
+
   async function getBooks() {
     setLoading(true);
     setError(null);

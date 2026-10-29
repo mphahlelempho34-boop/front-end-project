@@ -15,15 +15,16 @@ function NavBar() {
   else if (location.pathname === "/Registration" ) {
     return null;
   }
-
+/*<div className="navbar-links">
+        <Link to="/Registration" className="nav-link">Registration</Link>
+      </div>*/
+      
   return (
     <nav className="navbar">
       <div className="navbar-brand">
         <Link to="/">Books App</Link>
       </div>
-      <div className="navbar-links">
-        <Link to="/Registration" className="nav-link">Registration</Link>
-      </div>
+      
     </nav>
   );
 }

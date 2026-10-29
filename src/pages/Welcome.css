@@ -183,6 +183,34 @@ HEAD
   min-height: 220px;
 }
 
+.registerMessage {
+  /* Remove default link underline from the whole line */
+  text-decoration: none; 
+  color: #333333;        
+  
+  /* Positioning rules */
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  
+  /* Typography rules */
+  font-size: 0.85rem;
+  font-weight: 300;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Underline only this inner section */
+.registerMessage .underlineText {
+  text-decoration: underline;
+}
+
+/* Optional: Subtle hover effect for the whole text block */
+.registerMessage:hover {
+  color: #000000;
+}
+
+
 
 .spine {
   flex: 0 0 auto;
